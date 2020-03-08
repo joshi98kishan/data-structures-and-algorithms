@@ -5,7 +5,6 @@ using namespace std;
 using namespace std::chrono;
 
 void insertion_sort(int arr[], int len){
-
     for(int i=1; i<len; i++){
         int key = arr[i];
         int j = i-1;
@@ -31,6 +30,21 @@ void bubble_sort(int arr[], int len){
     }
 }
 
+void selection_sort(int arr[], int len){
+    for(int i=0; i<len-1; i++){
+        int smallest = i;
+        
+        for(int j=i+1; j<len; j++){
+            if(arr[j]<arr[smallest]){
+                smallest = j;
+            }
+        }
+        
+        int temp = arr[smallest];
+        arr[smallest] = arr[i];
+        arr[i] = temp;
+    }
+}
 
 int main()
 {
@@ -39,8 +53,9 @@ int main()
 
     auto start = high_resolution_clock::now();
 
-    insertion_sort(arr, len);
+    // insertion_sort(arr, len);
     // bubble_sort(arr, len);
+    selection_sort(arr, len);
 
     auto stop = high_resolution_clock::now();
 
